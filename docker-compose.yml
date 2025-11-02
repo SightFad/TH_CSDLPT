@@ -66,15 +66,22 @@ services:
     networks:
       - huflit-network
     environment: 
-      # - DB_HOST=mssql_global_112541 #giá trị cũ: mssql_single_123456 
-      - DB_HOST=mssql_site_a_112541    # thêm host của site a
-      # - DB_HOST=mssql_site_b_112541  # thêm host của site b nhưng chưa dùng
-      - DB_PORT=1433
-      - DB_NAME=Shop 
-      - DB_USER=sa 
-      - DB_PASS=${MSSQL_SA_PASSWORD}
+      # Site A
+      - DB_SITE_A_HOST=mssql_site_a_112541
+      - DB_SITE_A_PORT=1433
+      - DB_SITE_A_NAME=Shop
+      - DB_SITE_A_USER=sa
+      - DB_SITE_A_PASS=${MSSQL_SA_PASSWORD}
+
+      # Site B
+      - DB_SITE_B_HOST=mssql_site_b_112541
+      - DB_SITE_B_PORT=1433
+      - DB_SITE_B_NAME=Shop
+      - DB_SITE_B_USER=sa
+      - DB_SITE_B_PASS=${MSSQL_SA_PASSWORD}
     depends_on: 
-      - mssql_global_112541        # giá trị cũ: mssql_single
+      - mssql_site_a_112541
+      - mssql_site_b_112541
     ports: 
       - "8080:8080"
     volumes:

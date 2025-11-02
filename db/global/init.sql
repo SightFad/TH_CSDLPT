@@ -1,51 +1,38 @@
--- CREATE DATABASE Shop;
--- GO
+CREATE DATABASE Shop;
+GO
 
--- USE Shop;
--- GO
+USE Shop;
+GO
 -- Linked server tới site A
--- EXEC sp_addlinkedserver 
---    @server = N'mssql_site_a_112541',
---    @provider = N'MSOLEDBSQL',
---    @srvproduct = N'',
---    @datasrc = N'mssql_site_a_112541';
+EXEC sp_addlinkedserver 
+   @server = N'mssql_site_a_112541',
+   @provider = N'MSOLEDBSQL',
+   @srvproduct = N'',
+   @datasrc = N'mssql_site_a_112541';
 
--- EXEC sp_addlinkedsrvlogin 
---    @rmtsrvname = N'mssql_site_a_112541',
---    @useself = 'false',
---    @locallogin = NULL,
---    @rmtuser = 'sa',
---    @rmtpassword = 'Your@STROng!Pass#Word';
+EXEC sp_addlinkedsrvlogin 
+   @rmtsrvname = N'mssql_site_a_112541',
+   @useself = 'false',
+   @locallogin = NULL,
+   @rmtuser = 'sa',
+   @rmtpassword = 'Your@STROng!Pass#Word';
 
--- -- Linked server tới site B
--- EXEC sp_addlinkedserver 
---    @server = N'mssql_site_b_112541',
---    @provider = N'MSOLEDBSQL',
---    @srvproduct = N'',
---    @datasrc = N'mssql_site_b_112541';
+-- Linked server tới site B
+EXEC sp_addlinkedserver 
+   @server = N'mssql_site_b_112541',
+   @provider = N'MSOLEDBSQL',
+   @srvproduct = N'',
+   @datasrc = N'mssql_site_b_112541';
 
--- EXEC sp_addlinkedsrvlogin 
---    @rmtsrvname = N'mssql_site_b_112541',
---    @useself = 'false',
---    @locallogin = NULL,
---    @rmtuser = 'sa',
---    @rmtpassword = 'Your@STROng!Pass#Word';
--- GO
+EXEC sp_addlinkedsrvlogin 
+   @rmtsrvname = N'mssql_site_b_112541',
+   @useself = 'false',
+   @locallogin = NULL,
+   @rmtuser = 'sa',
+   @rmtpassword = 'Your@STROng!Pass#Word';
+GO
 -- View toàn cục
--- CREATE VIEW SanPham AS
--- SELECT * FROM mssql_site_a_112541.Shop.dbo.SanPham
--- UNION ALL
--- SELECT * FROM mssql_site_b_112541.Shop.dbo.SanPham;
-
--- GO
--- CREATE VIEW KhachHang AS
--- SELECT * FROM mssql_site_a_112541.Shop.dbo.KhachHang
--- UNION ALL
--- SELECT * FROM mssql_site_b_112541.Shop.dbo.KhachHang;
-
--- GO
--- CREATE VIEW HoaDon AS
--- SELECT * FROM mssql_site_a_112541.Shop.dbo.HoaDon
--- UNION ALL
--- SELECT * FROM mssql_site_b_112541.Shop.dbo.HoaDon;
-
+CREATE VIEW SanPham AS
+SELECT * FROM mssql_site_a_112541.Shop.dbo.SanPham
+UNION ALL
+SELECT * FROM mssql_site_b_112541.Shop.dbo.SanPham;
